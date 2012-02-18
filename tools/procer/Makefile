@@ -17,3 +17,18 @@ pristine:
 
 install: procer
 	install procer $(DESTDIR)$(PREFIX)/bin/
+
+netbsd: OPTFLAGS += -I/usr/local/include -I/usr/pkg/include
+netbsd: OPTLIBS += -L/usr/local/lib -L/usr/pkg/lib
+netbsd: LIBS=-lzmq -lsqlite3 $(OPTLIBS)
+netbsd: procer
+
+freebsd: OPTFLAGS += -I/usr/local/include
+freebsd: OPTLIBS += -L/usr/local/lib -pthread
+freebsd: LIBS=-lzmq -lsqlite3 $(OPTLIBS)
+freebsd: procer
+
+openbsd: OPTFLAGS += -I/usr/local/include
+openbsd: OPTLIBS += -L/usr/local/lib -pthread
+openbsd: LIBS=-lzmq -lsqlite3 $(OPTLIBS)
+openbsd: procer

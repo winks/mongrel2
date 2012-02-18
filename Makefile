@@ -151,11 +151,11 @@ release:
 	md5sum mongrel2-${VERSION}.tar.bz2
 	curl http://mongrel2.org/static/downloads/mongrel2-${VERSION}.tar.bz2 | md5sum
 
+
 netbsd: OPTFLAGS += -I/usr/local/include -I/usr/pkg/include
 netbsd: OPTLIBS += -L/usr/local/lib -L/usr/pkg/lib
 netbsd: LIBS=-lzmq -lsqlite3 $(OPTLIBS)
 netbsd: dev
-
 
 freebsd: OPTFLAGS += -I/usr/local/include
 freebsd: OPTLIBS += -L/usr/local/lib -pthread
@@ -171,7 +171,6 @@ solaris: OPTFLAGS += -I/usr/local/include
 solaris: OPTLIBS += -L/usr/local/lib -R/usr/local/lib -lsocket -lnsl -lsendfile
 solaris: OPTLIBS += -L/lib -R/lib
 solaris: all
-
 
 macports: OPTFLAGS += -I/opt/local/include
 macports: OPTLIBS += -L/opt/local/lib
